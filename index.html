@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Control Z — Equipo de Desarrollo</title>
+<link rel="stylesheet" href="css/estilos.css">
+
+</head>
+<body>
+
+<svg width="0" height="0">
+  <defs>
+    <linearGradient id="circGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#2dd4ee"/>
+      <stop offset="50%" stop-color="#4f7cff"/>
+      <stop offset="100%" stop-color="#a35bff"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<div class="wrap">
+
+<nav>
+  <div class="brand">
+    <img src="img/imagen-01.jpg" alt="Control Z">
+    CTRL<span class="z">Z</span>
+  </div>
+
+  <div class="navlinks">
+    <a href="#equipo"><span>01</span> Equipo</a>
+    <a href="#integrantes"><span>02</span> Integrantes</a>
+    <a href="#proyecto"><span>03</span> Proyecto</a>
+    <a href="#alcance"><span>04</span> Alcance</a>
+
+    <button type="button" class="nav-action" id="btnRegistro">
+      <span>05</span> Registro
+    </button>
+
+    <button type="button" class="nav-action" id="btnLogin">
+      <span>06</span> Login
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <img class="hero-logo" src="img/imagen-02.jpg" alt="Logo Control Z">
+  <div class="eyebrow">Proyecto Formativo · Laboratorio UPDS</div>
+  <h1>CTRL Z</h1>
+  <h2>Ingenieros de Sistemas</h2>
+  <div class="hero-tags">
+    <span>&lt;/&gt; <b>Código</b></span>
+    <span>{ } <b>Lógica</b></span>
+    <span>&gt;_ <b>Soluciones</b></span>
+  </div>
+  <p class="hero-sub">Somos el equipo <strong>Control Z S.A.</strong> — cuatro estudiantes de Ingeniería de Sistemas construyendo una <strong>plataforma de cursos en línea con suscripciones y pagos automatizados</strong> desde cero, con Scrum como método de trabajo.</p>
+  <div class="hero-meta">
+    <span>Equipo Control Z <em>·</em></span>
+    <span>Laboratorio UPDS <em>·</em></span>
+    <span>Agosto 2026</span>
+  </div>
+</header>
+
+<svg class="circuit" viewBox="0 0 1200 34" preserveAspectRatio="none">
+  <path d="M0 17 H420 L450 5 H620 L650 17 H1200"/>
+  <circle class="dot" cx="450" cy="5" r="3"/>
+  <circle class="dot" cx="650" cy="17" r="3"/>
+  <circle cx="1000" cy="17" r="4"/>
+</svg>
+
+<!-- ABOUT -->
+<section id="equipo">
+  <div class="section-head">
+    <div class="kicker">01 · Acerca de</div>
+    <h2>El equipo Control Z</h2>
+    <p>Cuatro personas, un mismo repositorio.</p>
+  </div>
+  <div class="about-grid">
+    <div>
+      <p>Control Z nació como el equipo de desarrollo formado para el laboratorio de <strong>Proyecto Formativo</strong> de la UPDS. Nuestro objetivo es diseñar, construir y defender una aplicación web funcional siguiendo prácticas ágiles reales: sprints, backlog priorizado, ceremonias y entregables trazables.</p>
+      <p>Cada integrante sostiene un rol principal —<strong>Product Owner, Scrum Master, Backend y Frontend</strong>— pero el equipo trabaja con la idea de que los roles pueden rotar por sprint, siempre que cada persona pueda evidenciar su aporte individual al proyecto.</p>
+    </div>
+    <div class="note-box">
+      <span class="tag">Nota de equipo</span>
+      <p>Los roles pueden ser rotativos por sprint; cada integrante debe evidenciar su aporte individual en cada entrega. La colaboración cruzada entre frontend y backend es parte del método, no la excepción.</p>
+    </div>
+  </div>
+</section>
+
+<svg class="circuit" viewBox="0 0 1200 34" preserveAspectRatio="none">
+  <path d="M0 17 H250 L280 29 H500 L530 17 H1200"/>
+  <circle class="dot" cx="280" cy="29" r="3"/>
+  <circle cx="800" cy="17" r="4"/>
+  <circle class="dot" cx="960" cy="17" r="3"/>
+</svg>
+
+<!-- TEAM -->
+<section id="integrantes">
+  <div class="section-head">
+    <div class="kicker">02 · Integrantes</div>
+    <h2>Quiénes construyen esto</h2>
+    <p>Cuatro perfiles, cuatro formas de resolver problemas.</p>
+  </div>
+
+  <div class="team-grid">
+
+    <!-- Francisco -->
+    <article class="card">
+      <div class="card-photo">
+        <img src="img/imagen-03.jpg" alt="Francisco Bailaba">
+        <span class="role-pill role-po">Product Owner</span>
+      </div>
+      <div class="card-body">
+        <h3>Francisco Bailaba</h3>
+        <p class="resp">Prioriza el backlog, valida criterios de aceptación y comunica avances al equipo.</p>
+      </div>
+      <details>
+        <summary>Sobre Francisco</summary>
+        <div class="details-inner">
+          <p class="quote">“Piensa dos veces, programa una vez.”</p>
+          <div class="meta-list">
+            <div><b>Carrera</b> Estudiante de Ing. de Sistemas</div>
+            <div><b>Hobby</b> Jugar COD</div>
+            <div><b>Sueño</b> Tener 100 seguidores en LinkedIn</div>
+            <div><b>Estado civil</b> Depende</div>
+          </div>
+          <div class="links">
+            <a href="#">Perfil →</a>
+          </div>
+        </div>
+      </details>
+    </article>
+
+    <!-- Mario -->
+    <article class="card">
+      <div class="card-photo">
+        <img src="img/imagen-04.jpg" alt="Mario Arroyo">
+        <span class="role-pill role-sm">Scrum Master</span>
+      </div>
+      <div class="card-body">
+        <h3>Mario Arroyo</h3>
+        <p class="resp">Facilita las ceremonias, elimina impedimentos y asegura las prácticas ágiles del equipo.</p>
+      </div>
+      <details>
+        <summary>Sobre Mario</summary>
+        <div class="details-inner">
+          <p class="quote">“La imaginación es más importante que el conocimiento. El conocimiento es limitado, mientras que la imaginación abarca el mundo.”</p>
+          <div class="meta-list">
+            <div><b>Hobby</b> Ir al campo</div>
+            <div><b>Sueño</b> Dejar una huella significativa a través de su trabajo, sus proyectos o inspirando a otros</div>
+            <div><b>Estado civil</b> Complicado</div>
+          </div>
+          <div class="links">
+            <a href="#">Perfil →</a>
+          </div>
+        </div>
+      </details>
+    </article>
+
+    <!-- Juan Jose -->
+    <article class="card">
+      <div class="card-photo">
+        <img src="img/imagen-05.jpg" alt="Juan Jose Vicente">
+        <span class="role-pill role-be">Backend</span>
+      </div>
+      <div class="card-body">
+        <h3>Juan José Vicente</h3>
+        <p class="resp">Implementa la API REST, los modelos, las migraciones y la lógica de negocio.</p>
+      </div>
+      <details>
+        <summary>Sobre Juan José</summary>
+        <div class="details-inner">
+          <p class="quote">“No es un bug, es una funcionalidad no documentada.”</p>
+          <div class="meta-list">
+            <div><b>Hobby</b> Jugar fútbol (los 3 tiempos)</div>
+            <div><b>Sueño</b> Terminar la carrera de una vez</div>
+            <div><b>Estado civil</b> Casado</div>
+          </div>
+          <div class="links">
+            <a href="#">Perfil →</a>
+          </div>
+        </div>
+      </details>
+    </article>
+
+    <!-- Allison -->
+    <article class="card">
+      <div class="card-photo">
+        <img src="img/imagen-06.jpg" alt="Allison Ramallo">
+        <span class="role-pill role-fe">Frontend</span>
+      </div>
+      <div class="card-body">
+        <h3>Allison Ramallo</h3>
+        <p class="resp">Implementa las vistas en Angular, los servicios de API, el estado y la experiencia de usuario.</p>
+      </div>
+      <details>
+        <summary>Sobre Allison</summary>
+        <div class="details-inner">
+          <p class="quote">“Convierto la creatividad en código y el código en experiencias.”</p>
+          <div class="meta-list">
+            <div><b>Carrera</b> Estudiante de Ing. de Sistemas</div>
+            <div><b>Hobby</b> Animación 2D e ilustración digital</div>
+            <div><b>Estado civil</b> Vivir del arte</div>
+          </div>
+          <div class="links">
+            <a href="https://github.com/Hall-0/Allison_Ramallo" target="_blank" rel="noopener">GitHub ↗</a>
+            <a href="https://www.linkedin.com/in/allison-ramallo-8b7482386" target="_blank" rel="noopener">LinkedIn ↗</a>
+          </div>
+        </div>
+      </details>
+    </article>
+
+  </div>
+
+  <div class="rotate-note">Nota: los roles pueden ser rotativos por sprint — <b>cada integrante evidencia su aporte individual</b> en cada entrega.</div>
+</section>
+
+<svg class="circuit" viewBox="0 0 1200 34" preserveAspectRatio="none">
+  <path d="M0 17 H620 L650 5 H820 L850 17 H1200"/>
+  <circle class="dot" cx="650" cy="5" r="3"/>
+  <circle cx="300" cy="17" r="4"/>
+  <circle class="dot" cx="850" cy="17" r="3"/>
+</svg>
+
+<!-- PROJECT -->
+<section id="proyecto">
+  <div class="section-head">
+    <div class="kicker">03 · El proyecto</div>
+    <h2>Plataforma de cursos en línea</h2>
+    <p>Suscripciones y pagos automatizados, de punta a punta.</p>
+  </div>
+
+  <div class="project-shell">
+    <div class="compare">
+      <div class="compare-col old">
+        <h4>Situación actual</h4>
+        <ul>
+          <li>Gestión en hojas de cálculo</li>
+          <li>Activación lenta de planes</li>
+          <li>Errores en permisos de cursos</li>
+          <li>Poca visibilidad de ingresos</li>
+        </ul>
+      </div>
+      <div class="compare-arrow">→</div>
+      <div class="compare-col new">
+        <h4>Sistema propuesto</h4>
+        <ul>
+          <li>Portal web con roles</li>
+          <li>Suscripciones por plan</li>
+          <li>Pagos simulados y controlados</li>
+          <li>Reportes para la toma de decisiones</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="alpha-banner">
+      <div class="left">
+        <div class="label">Objetivo del sistema</div>
+        <div class="name">Aplicación web funcional — <span>Sistema Alpha</span></div>
+      </div>
+      <p>Gestiona cursos, suscripciones, pagos y reportes con una interfaz responsive y roles diferenciados para administrador, instructor y estudiante.</p>
+    </div>
+  </div>
+</section>
+
+<svg class="circuit" viewBox="0 0 1200 34" preserveAspectRatio="none">
+  <path d="M0 17 H340 L370 29 H540 L570 17 H1200"/>
+  <circle class="dot" cx="370" cy="29" r="3"/>
+  <circle cx="900" cy="17" r="4"/>
+  <circle class="dot" cx="1050" cy="17" r="3"/>
+</svg>
+
+<!-- SCOPE -->
+<section id="alcance">
+  <div class="section-head">
+    <div class="kicker">04 · Alcance funcional mínimo</div>
+    <h2>Módulos de la primera versión</h2>
+    <p>Lo que el sistema debe cubrir para considerarse entregable.</p>
+  </div>
+
+  <div class="project-shell">
+    <div class="modules-grid">
+      <div class="module-card">
+        <div class="module-num">01</div>
+        <h5>Usuarios</h5>
+        <p>Registro, login y roles con permisos diferenciados.</p>
+      </div>
+      <div class="module-card">
+        <div class="module-num">02</div>
+        <h5>Cursos</h5>
+        <p>Listado público, filtros, detalle y acceso restringido.</p>
+      </div>
+      <div class="module-card">
+        <div class="module-num">03</div>
+        <h5>Suscripciones</h5>
+        <p>Planes, contratación, renovación e historial.</p>
+      </div>
+      <div class="module-card">
+        <div class="module-num">04</div>
+        <h5>Pagos</h5>
+        <p>Pasarela de prueba, transacciones y confirmación.</p>
+      </div>
+      <div class="module-card">
+        <div class="module-num">05</div>
+        <h5>Reportes</h5>
+        <p>Ingresos, cursos top y estudiantes activos.</p>
+      </div>
+    </div>
+
+    <div class="scope-rule">Regla de alcance: priorizar lo <b>obligatorio</b>, validar cada módulo por sprint y mantener trazabilidad entre historias, tareas y entregables.</div>
+  </div>
+</section>
+
+
+<!-- =========================================================
+     MODALES DE REGISTRO Y LOGIN
+     ========================================================= -->
+
+<!-- REGISTRO -->
+<div class="modal-overlay" id="registroModal" aria-hidden="true">
+  <div class="modal modal-register" role="dialog" aria-modal="true" aria-labelledby="registroTitulo">
+    <button type="button" class="modal-close" data-close-modal aria-label="Cerrar">×</button>
+
+    <div class="modal-header" align="center">
+      <!--<div class="modal-kicker">CTRL Z </div>-->
+      <h2 id="registroTitulo">REGISTRO ESTUDIANTE</h2>
+      <h2 id="registroTitulo">CTRL Z ACADEMY</h2>
+      <p>Completa los datos para crear una nueva cuenta.</p>
+    </div>
+
+    <form id="formRegistro" class="form-register">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="regNombres">Nombres:</label>
+          <input type="text" id="regNombres" name="nombres" autocomplete="given-name" required>
+        </div>
+        <div class="form-group">
+          <label for="regApellidos">Apellidos:</label>
+          <input type="text" id="regApellidos" name="apellidos" autocomplete="family-name" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="regFecha">Fecha Nacimiento:</label>
+          <input type="date" id="regFecha" name="fecha_nacimiento" required>
+        </div>
+        <div class="form-group form-group-radio">
+          <span class="form-label">Sexo:</span>
+          <label class="radio-option"><input type="radio" name="sexo" value="M" required> Masculino</label>
+          <label class="radio-option"><input type="radio" name="sexo" value="F"> Femenino</label>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="regCedula">Cedula:</label>
+          <input type="text" id="regCedula" name="cedula" inputmode="numeric" required>
+        </div>
+        <div class="form-group">
+          <label for="regExtension">Extensión:</label>
+          <input type="text" id="regExtension" name="extension">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group form-group-radio">
+          <span class="form-label">Estado civil:</span>
+          <label class="radio-option"><input type="radio" name="estado_civil" value="soltero" required> Soltero/a</label>
+          <label class="radio-option"><input type="radio" name="estado_civil" value="casado"> Casado/a</label>
+        </div>
+        <div class="form-group">
+          <label for="regTelefono">Telefono:</label>
+          <input type="tel" id="regTelefono" name="telefono" autocomplete="tel">
+        </div>
+      </div>
+      <input type="hidden" name="tipoper" id="tipoper" value="3">      
+
+      <div class="form-row form-row-full">
+        <div class="form-group">
+          <label for="regCorreo">Correo:</label>
+          <input type="email" id="regCorreo" name="correo" autocomplete="email" required>
+        </div>
+      </div>
+
+      <div class="form-row form-row-full">
+        <div class="form-group">
+          <label for="regPassword">Contraseña:</label>
+          <input type="password" id="regPassword" name="password" autocomplete="new-password" required>
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button type="submit" class="btn-primary">REGISTRAR</button>
+      </div>      
+    </form>
+  </div>
+</div>
+
+<!-- LOGIN ADMIN -->
+<div class="modal-overlay" id="loginAdminModal" aria-hidden="true">
+  <div class="modal modal-login" role="dialog" aria-modal="true" aria-labelledby="loginAdminTitulo">
+    <button type="button" class="modal-close" data-close-modal aria-label="Cerrar">×</button>
+    <div class="modal-header">
+      <div class="modal-kicker">CTRL Z · ACCESO</div>
+      <h2 id="loginAdminTitulo">LOGIN</h2>
+      <p>Acceso al panel de administración, docente y estudiante.</p>
+    </div>
+    <form class="login-form" id="formLoginAdmin" data-rol="1">
+      <div class="form-group">
+        <label for="adminUsuario">Correo:</label>
+        <input type="email" id="adminUsuario" name="usuario" autocomplete="username" required>
+      </div>
+      <div class="form-group">
+        <label for="adminPassword">Contraseña:</label>
+        <input type="password" id="adminPassword" name="password" autocomplete="current-password" required>
+      </div>
+      <div class="modal-actions">
+        <button type="submit" class="btn-primary">INGRESAR</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- VERIFICACIÓN DE CÓDIGO (2do factor, tras correo+contraseña correctos) -->
+<div class="modal-overlay" id="verificacionModal" aria-hidden="true">
+  <div class="modal modal-login" role="dialog" aria-modal="true" aria-labelledby="verificacionTitulo">
+    <button type="button" class="modal-close" data-close-modal aria-label="Cerrar">×</button>
+    <div class="modal-header">
+      <div class="modal-kicker">CTRL Z · VERIFICACIÓN</div>
+      <h2 id="verificacionTitulo">INGRESA TU CÓDIGO</h2>
+      <p id="verifSubtexto">Te enviamos un código de 4 dígitos a tu correo.</p>
+    </div>
+    <form id="formVerificacion">
+      <input type="hidden" id="verifCorreo" name="correo">
+      <div class="form-group">
+        <label for="verifCodigo">Código de verificación:</label>
+        <input type="text" id="verifCodigo" name="codigo" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" required autocomplete="one-time-code">
+      </div>
+      <p id="verifMensaje" style="min-height:1.2em;"></p>
+      <div class="modal-actions">
+        <button type="submit" class="btn-primary">VERIFICAR</button>
+      </div>
+      <p style="text-align:center; margin-top:.75rem;">
+        <a href="#" id="btnReenviarCodigo">¿No te llegó? Reenviar código</a>
+      </p>
+    </form>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="motto-label">Lema del equipo</div>
+  <p class="motto">Todo error tiene un <span>Ctrl+Z</span>. Nosotros construimos el redo.</p>
+  <p class="commit">Compromiso: construir una solución funcional, documentada y defendible, cumpliendo el alcance mínimo y las evidencias Scrum.</p>
+  <div class="foot-bottom">
+    <span class="z">CTRL Z</span>
+    <span>· Equipo Control Z S.A. · Laboratorio UPDS · Agosto 2026</span>
+  </div>
+</footer>
+
+</div>
+  <script src="js/modal-login.js"></script>
+</body>
+</html>
