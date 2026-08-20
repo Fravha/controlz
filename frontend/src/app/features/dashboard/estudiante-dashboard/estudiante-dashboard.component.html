@@ -1,0 +1,54 @@
+<section class="dashboard-shell container">
+  <div class="dashboard-head">
+    <div class="kicker">Panel · Estudiante</div>
+    <h1>Bienvenido/a, {{ auth.usuario()?.nombres }}</h1>
+    <p>Explorá los cursos disponibles y seguí tu progreso.</p>
+  </div>
+
+  <div class="modules-grid modules-nav">
+    <button type="button" class="module-card panel" [class.activo]="seccion() === 'cursos-gratuitos'" (click)="irA('cursos-gratuitos')">
+      <div class="module-num">01</div>
+      <h5>Cursos gratuitos</h5>
+      <p>Inscríbete sin costo y empezá a aprender.</p>
+    </button>
+    <button type="button" class="module-card panel" [class.activo]="seccion() === 'suscripcion'" (click)="irA('suscripcion')">
+      <div class="module-num">02</div>
+      <h5>Mi suscripción</h5>
+      <p>Plan actual, historial y renovación.</p>
+    </button>
+    <button type="button" class="module-card panel" [class.activo]="seccion() === 'mis-cursos'" (click)="irA('mis-cursos')">
+      <div class="module-num">03</div>
+      <h5>Mis cursos</h5>
+      <p>Cursos en los que estás inscrito/a.</p>
+    </button>
+  </div>
+
+  <div class="panel seccion-contenido">
+    @switch (seccion()) {
+      @case ('cursos-gratuitos') {
+        <div class="cursos-grid">
+          @for (c of cursosGratuitos(); track c.id) {
+            <div class="curso-card">
+              <span class="curso-nivel">{{ c.nivel }}</span>
+              <h5>{{ c.titulo }}</h5>
+              <p>{{ c.descripcion }}</p>
+              <p class="curso-duracion">{{ c.duracionHoras }} horas</p>
+            </div>
+          }
+        </div>
+      }
+
+      @case ('suscripcion') {
+        @if (suscripcion(); as s) {
+          <p><strong>Plan activo:</strong> {{ s.plan?.nombre }} · vence {{ s.fechaFin }}</p>
+        } @else {
+          <p>No tenés una suscripción activa. <a routerLink="/cursos">Explorá los planes</a>.</p>
+        }
+      }
+
+      @case ('mis-cursos') {
+        <p class="estado-vacio">Aún no estás inscrito/a en ningún curso.</p>
+      }
+    }
+  </div>
+</section>

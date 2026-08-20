@@ -1,0 +1,29 @@
+<header class="hero container">
+  <div class="eyebrow">Proyecto Formativo · Laboratorio UPDS</div>
+  <h1>CTRL Z</h1>
+  <h2>Plataforma de cursos en línea</h2>
+  <p class="hero-sub">
+    Suscripciones y pagos automatizados, de punta a punta. Equipo Control Z S.A.
+  </p>
+  <div class="hero-actions">
+    <a routerLink="/cursos" class="btn btn-primary">Ver cursos</a>
+    <a routerLink="/registro" class="btn btn-ghost">Crear cuenta</a>
+  </div>
+</header>
+
+<section class="container alcance">
+  <div class="section-head">
+    <div class="kicker">Alcance funcional mínimo</div>
+    <h2>Módulos de la primera versión</h2>
+  </div>
+
+  <div class="modules-grid">
+    @for (m of modulos; track m.num) {
+      <div class="module-card panel">
+        <div class="module-num">{{ m.num }}</div>
+        <h5>{{ m.titulo }}</h5>
+        <p>{{ m.desc }}</p>
+      </div>
+    }
+  </div>
+</section>

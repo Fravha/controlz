@@ -1,0 +1,136 @@
+<section class="dashboard-shell container">
+  <div class="dashboard-head">
+    <div class="kicker">Panel · Docente</div>
+    <h1>Bienvenido/a, {{ auth.usuario()?.nombres }}</h1>
+    <p>Administra tus cursos, revisa a tus estudiantes y gestiona calificaciones.</p>
+  </div>
+
+  <div class="modules-grid modules-nav">
+    <button type="button" class="module-card panel" [class.activo]="seccion() === 'cursos'" (click)="irA('cursos')">
+      <div class="module-num">01</div>
+      <h5>Mis cursos</h5>
+      <p>{{ cargandoCursos() ? 'Cargando…' : (misCursos().length + ' curso(s)') }}</p>
+    </button>
+    <button type="button" class="module-card panel" [class.activo]="seccion() === 'estudiantes'" (click)="irA('estudiantes')">
+      <div class="module-num">02</div>
+      <h5>Estudiantes</h5>
+      <p>Ver quién está inscrito en tus cursos.</p>
+    </button>
+    <button type="button" class="module-card panel" [class.activo]="seccion() === 'calificaciones'" (click)="irA('calificaciones')">
+      <div class="module-num">03</div>
+      <h5>Calificaciones</h5>
+      <p>Registrar y revisar notas por curso.</p>
+    </button>
+  </div>
+
+  <div class="panel seccion-contenido">
+    @switch (seccion()) {
+      @case ('cursos') {
+        @if (!cursosDesdeBackend()) {
+          <div class="aviso-pendiente">
+            Backend pendiente: <code>controllers/CursoController.php</code> todavía no existe. Se muestran
+            cursos de ejemplo para poder demostrar la vista mientras tanto.
+          </div>
+        }
+
+        <div class="cursos-grid">
+          @for (c of misCursos(); track c.id) {
+            <div class="curso-card">
+              <span class="curso-nivel">{{ c.nivel }}</span>
+              <h5>{{ c.titulo }}</h5>
+              <p>{{ c.inscritos ?? 0 }} estudiante(s) inscrito(s)</p>
+            </div>
+          }
+        </div>
+      }
+
+      @case ('estudiantes') {
+        <div class="aviso-pendiente">
+          Backend pendiente: <code>controllers/CursoController.php</code> (inscripciones). Se muestran
+          estudiantes de ejemplo.
+        </div>
+
+        <table class="tabla-simple">
+          <thead>
+            <tr>
+              <th>Estudiante</th>
+              <th>Correo</th>
+              <th>Curso</th>
+              <th>Progreso</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (e of estudiantes(); track e.correo) {
+              <tr>
+                <td>{{ e.nombre }}</td>
+                <td>{{ e.correo }}</td>
+                <td>{{ e.curso }}</td>
+                <td>{{ e.progreso }}%</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      }
+
+      @case ('calificaciones') {
+        <div class="aviso-pendiente">
+          Backend pendiente: <code>controllers/CalificacionController.php</code> no existe todavía. Este
+          formulario guarda las calificaciones solo en el navegador (se pierden al recargar) hasta que se
+          conecte a un endpoint real.
+        </div>
+
+        <form class="form-calificacion" (ngSubmit)="registrarCalificacion()">
+          <div class="field">
+            <label for="curso">Curso</label>
+            <select id="curso" [(ngModel)]="nuevaCalificacion.curso" name="curso" required>
+              <option value="" disabled>Selecciona un curso</option>
+              @for (c of misCursos(); track c.id) {
+                <option [value]="c.titulo">{{ c.titulo }}</option>
+              }
+            </select>
+          </div>
+          <div class="field">
+            <label for="estudiante">Estudiante</label>
+            <input id="estudiante" type="text" [(ngModel)]="nuevaCalificacion.estudiante" name="estudiante" placeholder="Nombre del estudiante" required />
+          </div>
+          <div class="field">
+            <label for="nota">Nota (0-100)</label>
+            <input id="nota" type="number" min="0" max="100" [(ngModel)]="nuevaCalificacion.nota" name="nota" required />
+          </div>
+          <div class="field field-ancho">
+            <label for="comentario">Comentario</label>
+            <input id="comentario" type="text" [(ngModel)]="nuevaCalificacion.comentario" name="comentario" placeholder="Observaciones (opcional)" />
+          </div>
+          <button type="submit" class="btn btn-primary">Registrar calificación</button>
+        </form>
+
+        @if (calificaciones().length === 0) {
+          <p class="estado-vacio">Todavía no registraste ninguna calificación.</p>
+        } @else {
+          <table class="tabla-simple">
+            <thead>
+              <tr>
+                <th>Fecha</th>
+                <th>Curso</th>
+                <th>Estudiante</th>
+                <th>Nota</th>
+                <th>Comentario</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (cal of calificaciones(); track cal.id) {
+                <tr>
+                  <td>{{ cal.fecha }}</td>
+                  <td>{{ cal.curso }}</td>
+                  <td>{{ cal.estudiante }}</td>
+                  <td>{{ cal.nota }}</td>
+                  <td>{{ cal.comentario || '—' }}</td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        }
+      }
+    }
+  </div>
+</section>

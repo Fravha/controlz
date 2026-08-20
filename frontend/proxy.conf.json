@@ -1,0 +1,9 @@
+{
+  "/controllers": {
+    "target": "http://localhost/CTROL-Z",
+    "secure": false,
+    "changeOrigin": true,
+    "cookieDomainRewrite": "localhost",
+    "logLevel": "debug"
+  }
+}

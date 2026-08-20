@@ -1,0 +1,41 @@
+<div class="usuarios-panel">
+  <div class="usuarios-head">
+    <h3>Usuarios registrados</h3>
+    <p>Cambiá el rol y confirmá para actualizar en el sistema.</p>
+  </div>
+
+  @if (cargando()) {
+    <p class="estado-vacio">Cargando usuarios…</p>
+  } @else if (error()) {
+    <div class="alert alert-error">{{ error() }}</div>
+  } @else if (filas().length === 0) {
+    <p class="estado-vacio">No hay personas registradas.</p>
+  } @else {
+    <div class="usuarios-list">
+      @for (fila of filas(); track fila.id) {
+        <div class="usuario-row">
+          <div class="usuario-info">
+            <div class="nombre">{{ fila.nombres }} {{ fila.apellidos }}</div>
+            <div class="correo">{{ fila.correo || 'sin correo' }}</div>
+          </div>
+
+          <select [(ngModel)]="fila.rolSeleccionado" [disabled]="fila.guardando">
+            @for (r of roles; track r.value) {
+              <option [ngValue]="r.value">{{ r.label }}</option>
+            }
+          </select>
+
+          <button
+            type="button"
+            class="btn-confirmar"
+            [class.saved]="fila.guardado"
+            [disabled]="fila.guardando"
+            (click)="confirmar(fila)"
+          >
+            {{ fila.guardando ? 'Guardando…' : fila.guardado ? 'Guardado ✓' : fila.error ? 'Reintentar' : 'Confirmar' }}
+          </button>
+        </div>
+      }
+    </div>
+  }
+</div>

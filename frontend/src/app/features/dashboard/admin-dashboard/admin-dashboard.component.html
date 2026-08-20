@@ -1,0 +1,168 @@
+<section class="dashboard-shell container">
+  <div class="dashboard-head">
+    <div class="kicker">Panel · Administrador</div>
+    <h1>Bienvenido/a, {{ auth.usuario()?.nombres }}</h1>
+    <p>Gestión completa de la plataforma: usuarios, cursos, suscripciones, pagos y reportes.</p>
+  </div>
+
+  @if (actividad(); as a) {
+    <div class="stat-row">
+      <div class="panel stat-tile">
+        <div class="stat-label">Estudiantes activos</div>
+        <div class="stat-value">{{ a.activos }}</div>
+      </div>
+      <div class="panel stat-tile">
+        <div class="stat-label">Estudiantes inactivos</div>
+        <div class="stat-value">{{ a.inactivos }}</div>
+      </div>
+      <div class="panel stat-tile">
+        <div class="stat-label">Cursos más inscritos</div>
+        <div class="stat-value">{{ cursosPopulares().length || '—' }}</div>
+      </div>
+    </div>
+  }
+
+  <div class="modules-grid modules-nav">
+    <button type="button" class="module-card panel" [class.activo]="seccion() === 'usuarios'" (click)="irA('usuarios')">
+      <div class="module-num">01</div>
+      <h5>Usuarios</h5>
+      <p>Activar cuentas, revisar registros y administrar roles.</p>
+    </button>
+    <button type="button" class="module-card panel" [class.activo]="seccion() === 'cursos'" (click)="irA('cursos')">
+      <div class="module-num">02</div>
+      <h5>Cursos</h5>
+      <p>ABMC de cursos disponibles en el catálogo.</p>
+    </button>
+    <button type="button" class="module-card panel" [class.activo]="seccion() === 'suscripciones'" (click)="irA('suscripciones')">
+      <div class="module-num">03</div>
+      <h5>Suscripciones</h5>
+      <p>Planes activos, renovaciones e historial.</p>
+    </button>
+    <button type="button" class="module-card panel" [class.activo]="seccion() === 'pagos'" (click)="irA('pagos')">
+      <div class="module-num">04</div>
+      <h5>Pagos</h5>
+      <p>Transacciones, confirmaciones y estado de pagos.</p>
+    </button>
+    <button type="button" class="module-card panel" [class.activo]="seccion() === 'reportes'" (click)="irA('reportes')">
+      <div class="module-num">05</div>
+      <h5>Reportes</h5>
+      <p>Ingresos mensuales, cursos top y actividad de estudiantes.</p>
+    </button>
+  </div>
+
+  <div class="panel seccion-contenido">
+    @switch (seccion()) {
+      @case ('usuarios') {
+        <app-usuarios-panel />
+      }
+
+      @case ('cursos') {
+        <div class="aviso-pendiente">
+          Backend pendiente: <code>controllers/CursoController.php</code> todavía no existe. Este formulario
+          funciona en el navegador para probar la interacción; al conectar el backend, reemplaza el guardado
+          local por una llamada real a <code>CursoService</code>.
+        </div>
+
+        <form class="form-inline" (ngSubmit)="agregarCurso()">
+          <div class="field">
+            <label for="titulo">Título</label>
+            <input id="titulo" type="text" [(ngModel)]="nuevoCurso.titulo" name="titulo" required />
+          </div>
+          <div class="field">
+            <label for="descripcion">Descripción</label>
+            <input id="descripcion" type="text" [(ngModel)]="nuevoCurso.descripcion" name="descripcion" />
+          </div>
+          <div class="field">
+            <label for="duracion">Duración (h)</label>
+            <input id="duracion" type="number" min="0" [(ngModel)]="nuevoCurso.duracionHoras" name="duracion" />
+          </div>
+          <div class="field">
+            <label for="nivel">Nivel</label>
+            <select id="nivel" [(ngModel)]="nuevoCurso.nivel" name="nivel" required>
+              @for (n of niveles; track n) {
+                <option [ngValue]="n">{{ n }}</option>
+              }
+            </select>
+          </div>
+          <div class="field">
+            <label for="categoria">Categoría</label>
+            <input id="categoria" type="text" [(ngModel)]="nuevoCurso.categoria" name="categoria" />
+          </div>
+          <div class="field">
+            <label for="precio">Precio base (Bs.)</label>
+            <input id="precio" type="number" min="0" [(ngModel)]="nuevoCurso.precioBase" name="precio" />
+          </div>
+          <button type="submit" class="btn btn-primary">Agregar curso</button>
+        </form>
+
+        @if (cursos().length === 0) {
+          <p class="estado-vacio">Todavía no agregaste ningún curso.</p>
+        } @else {
+          <table class="tabla-simple">
+            <thead>
+              <tr>
+                <th>Título</th>
+                <th>Nivel</th>
+                <th>Duración</th>
+                <th>Precio</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (c of cursos(); track c.id) {
+                <tr>
+                  <td>{{ c.titulo }}</td>
+                  <td>{{ c.nivel }}</td>
+                  <td>{{ c.duracionHoras }} h</td>
+                  <td>Bs. {{ c.precioBase }}</td>
+                  <td><button type="button" class="btn-eliminar" (click)="eliminarCurso(c.id)">Eliminar</button></td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        }
+      }
+
+      @case ('suscripciones') {
+        <div class="aviso-pendiente">
+          Backend pendiente: <code>controllers/SuscripcionController.php</code> todavía no existe. Se muestran
+          los 3 planes definidos en la consigna (Básico, Pro, Premium) como referencia visual.
+        </div>
+
+        <div class="planes-grid">
+          @for (p of planes(); track p.id) {
+            <div class="plan-card">
+              <div class="plan-nombre">{{ p.nombre }}</div>
+              <div class="plan-precio">Bs. {{ p.precio }} / mes</div>
+              <div class="plan-detalle">{{ p.maxCursos ?? 'Ilimitados' }} curso(s)/mes</div>
+            </div>
+          }
+        </div>
+      }
+
+      @case ('pagos') {
+        <div class="aviso-pendiente">
+          Backend pendiente: <code>controllers/PagoController.php</code> todavía no existe (pasarela de
+          prueba tipo Stripe/PayPal Sandbox, según la consigna). Acá va a listarse el historial de
+          transacciones una vez que exista ese endpoint.
+        </div>
+        <p class="estado-vacio">Sin transacciones registradas todavía.</p>
+      }
+
+      @case ('reportes') {
+        @if (!reportesDisponibles()) {
+          <div class="aviso-pendiente">
+            Backend pendiente: <code>controllers/ReporteController.php</code> todavía no existe. Acá se van a
+            mostrar ingresos mensuales, cursos más inscritos y estudiantes activos/inactivos.
+          </div>
+        } @else {
+          <ul>
+            @for (i of ingresos(); track i.mes + i.plan) {
+              <li>{{ i.mes }} · {{ i.plan }} · Bs. {{ i.totalIngresos }}</li>
+            }
+          </ul>
+        }
+      }
+    }
+  </div>
+</section>

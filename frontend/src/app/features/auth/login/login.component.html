@@ -1,0 +1,68 @@
+<section class="auth-shell">
+  @if (paso() === 'credenciales') {
+    <form class="panel auth-panel" [formGroup]="form" (ngSubmit)="enviar()">
+      <div class="auth-kicker">CTRL Z · ACCESO</div>
+      <h1>Iniciar sesión</h1>
+      <p class="auth-sub">Tu rol (administrador, docente o estudiante) se detecta automáticamente según tu cuenta.</p>
+
+      @if (error()) {
+        <div class="alert alert-error">{{ error() }}</div>
+      }
+
+      <div class="field">
+        <label for="correo">Correo electrónico</label>
+        <input id="correo" type="email" formControlName="correo" placeholder="tu@correo.com" />
+        @if (form.controls.correo.touched && form.controls.correo.invalid) {
+          <span class="error-text">Ingresa un correo válido.</span>
+        }
+      </div>
+
+      <div class="field">
+        <label for="password">Contraseña</label>
+        <input id="password" type="password" formControlName="password" placeholder="••••••••" />
+        @if (form.controls.password.touched && form.controls.password.invalid) {
+          <span class="error-text">Mínimo 6 caracteres.</span>
+        }
+      </div>
+
+      <button type="submit" class="btn btn-primary" [disabled]="cargando()">
+        {{ cargando() ? 'Ingresando…' : 'Ingresar' }}
+      </button>
+
+      <p class="auth-switch">
+        ¿No tenés cuenta? <a routerLink="/registro">Regístrate</a>
+      </p>
+    </form>
+  } @else {
+    <form class="panel auth-panel" [formGroup]="formCodigo" (ngSubmit)="verificar()">
+      <div class="auth-kicker">CTRL Z · VERIFICACIÓN</div>
+      <h1>Ingresa el código</h1>
+      <p class="auth-sub">Enviamos un código de 4 dígitos a <strong>{{ correoPendiente() }}</strong>. Vence en 10 minutos.</p>
+
+      @if (info()) {
+        <div class="alert alert-ok">{{ info() }}</div>
+      }
+      @if (error()) {
+        <div class="alert alert-error">{{ error() }}</div>
+      }
+
+      <div class="field">
+        <label for="codigo">Código de verificación</label>
+        <input id="codigo" type="text" inputmode="numeric" maxlength="4" autocomplete="one-time-code"
+               formControlName="codigo" placeholder="0000" class="codigo-input" />
+        @if (formCodigo.controls.codigo.touched && formCodigo.controls.codigo.invalid) {
+          <span class="error-text">Ingresa los 4 dígitos.</span>
+        }
+      </div>
+
+      <button type="submit" class="btn btn-primary" [disabled]="cargando()">
+        {{ cargando() ? 'Verificando…' : 'Verificar e ingresar' }}
+      </button>
+
+      <div class="auth-actions">
+        <button type="button" class="btn btn-ghost" (click)="reenviar()">Reenviar código</button>
+        <button type="button" class="link-btn" (click)="volver()">← Cambiar de cuenta</button>
+      </div>
+    </form>
+  }
+</section>

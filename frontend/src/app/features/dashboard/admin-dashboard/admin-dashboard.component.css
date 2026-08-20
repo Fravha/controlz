@@ -1,0 +1,67 @@
+.modules-nav {
+  margin-bottom: 24px;
+}
+
+.form-inline {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0 16px;
+  align-items: end;
+  margin-bottom: 24px;
+}
+
+.form-inline .btn {
+  grid-column: 1 / -1;
+  width: fit-content;
+}
+
+.btn-eliminar {
+  background: transparent;
+  border: 1px solid rgba(255, 93, 122, 0.4);
+  color: var(--danger);
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.planes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+}
+
+.plan-card {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 18px;
+  background: var(--panel-2);
+}
+
+.plan-nombre {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.plan-precio {
+  color: var(--cyan);
+  font-family: var(--mono);
+  margin-bottom: 6px;
+}
+
+.plan-detalle {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+@media (max-width: 720px) {
+  .form-inline {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-inline {
+    grid-template-columns: 1fr;
+  }
+}
