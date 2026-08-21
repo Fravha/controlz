@@ -1,0 +1,81 @@
+.auth-shell {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.auth-panel {
+  width: 100%;
+  max-width: 420px;
+}
+
+.auth-kicker {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--cyan);
+  margin-bottom: 8px;
+}
+
+.auth-panel h1 {
+  margin: 0 0 4px;
+  font-size: 26px;
+}
+
+.auth-sub {
+  color: var(--muted);
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.btn {
+  width: 100%;
+}
+
+.auth-switch {
+  margin-top: 16px;
+  font-size: 13px;
+  color: var(--muted);
+  text-align: center;
+}
+
+.auth-switch a {
+  color: var(--cyan);
+  text-decoration: none;
+}
+
+/* ---- Paso de verificación (código 2FA) ---- */
+.codigo-input {
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 28px;
+  letter-spacing: 14px;
+  padding-left: 14px; /* compensa el letter-spacing para que se vea centrado */
+}
+
+.auth-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 14px;
+  align-items: center;
+}
+
+.auth-actions .btn-ghost {
+  width: 100%;
+}
+
+.link-btn {
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 13px;
+  cursor: pointer;
+  font-family: var(--mono);
+}
+
+.link-btn:hover {
+  color: var(--cyan);
+}

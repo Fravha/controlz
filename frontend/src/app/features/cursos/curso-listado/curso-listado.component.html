@@ -1,0 +1,63 @@
+<section class="cursos-shell container">
+  <div class="section-head">
+    <div class="kicker">Catálogo</div>
+    <h1>Cursos disponibles</h1>
+    <p>Filtra por nivel, categoría o precio para encontrar el curso que buscas.</p>
+  </div>
+
+  <form class="filtros panel" (ngSubmit)="buscar()">
+    <div class="field">
+      <label for="q">Buscar</label>
+      <input id="q" type="text" [(ngModel)]="filtro.q" name="q" placeholder="Título del curso…" />
+    </div>
+
+    <div class="field">
+      <label for="nivel">Nivel</label>
+      <select id="nivel" [(ngModel)]="filtro.nivel" name="nivel">
+        <option [ngValue]="undefined">Todos</option>
+        @for (n of niveles; track n) {
+          <option [ngValue]="n">{{ n }}</option>
+        }
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="categoria">Categoría</label>
+      <input id="categoria" type="text" [(ngModel)]="filtro.categoria" name="categoria" placeholder="Ej: Backend" />
+    </div>
+
+    <div class="field">
+      <label for="precioMax">Precio máximo</label>
+      <input id="precioMax" type="number" [(ngModel)]="filtro.precioMax" name="precioMax" min="0" />
+    </div>
+
+    <div class="filtros-acciones">
+      <button type="submit" class="btn btn-primary">Filtrar</button>
+      <button type="button" class="btn btn-ghost" (click)="limpiarFiltros()">Limpiar</button>
+    </div>
+  </form>
+
+  @if (error()) {
+    <div class="alert alert-error">{{ error() }}</div>
+  }
+
+  @if (cargando()) {
+    <p class="estado-vacio">Cargando cursos…</p>
+  } @else if (cursos().length === 0) {
+    <p class="estado-vacio">No hay cursos que coincidan con los filtros.</p>
+  } @else {
+    <div class="cursos-grid">
+      @for (curso of cursos(); track curso.id) {
+        <a class="curso-card panel" [routerLink]="['/cursos', curso.id]">
+          <span class="curso-nivel">{{ curso.nivel }}</span>
+          <h3>{{ curso.titulo }}</h3>
+          <p class="curso-desc">{{ curso.descripcion }}</p>
+          <div class="curso-meta">
+            <span>{{ curso.duracionHoras }} h</span>
+            <span>{{ curso.planRequerido ? ('Plan ' + curso.planRequerido) : 'Bs. ' + curso.precioBase }}</span>
+          </div>
+        </a>
+      }
+    </div>
+  }
+</section>

@@ -1,0 +1,92 @@
+.usuarios-panel {
+  margin-bottom: 32px;
+}
+
+.usuarios-head {
+  margin-bottom: 16px;
+}
+
+.usuarios-head h3 {
+  margin: 0 0 4px;
+  font-size: 18px;
+}
+
+.usuarios-head p {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 0;
+}
+
+.estado-vacio {
+  color: var(--muted);
+  padding: 20px 0;
+}
+
+.usuarios-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.usuario-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+
+.usuario-info .nombre {
+  color: var(--text);
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.usuario-info .correo {
+  color: var(--muted);
+  font-size: 12.5px;
+  margin-top: 2px;
+}
+
+.usuario-row select {
+  background: var(--panel-2);
+  color: var(--text);
+  border: 1px solid rgba(79, 124, 255, 0.4);
+  border-radius: 8px;
+  padding: 7px 10px;
+  font-size: 13.5px;
+  cursor: pointer;
+}
+
+.btn-confirmar {
+  border: none;
+  border-radius: 8px;
+  padding: 7px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #06101c;
+  background: linear-gradient(90deg, var(--cyan), var(--blue));
+  cursor: pointer;
+  transition: opacity 0.15s ease, transform 0.1s ease;
+  white-space: nowrap;
+}
+
+.btn-confirmar:hover {
+  opacity: 0.9;
+}
+
+.btn-confirmar:active {
+  transform: scale(0.97);
+}
+
+.btn-confirmar.saved {
+  background: #2ecc71;
+}
+
+.btn-confirmar:disabled {
+  opacity: 0.6;
+  cursor: default;
+}

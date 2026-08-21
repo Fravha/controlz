@@ -1,0 +1,94 @@
+<section class="auth-shell">
+  <form class="panel auth-panel" [formGroup]="form" (ngSubmit)="enviar()">
+    <div class="auth-kicker">CTRL Z · USUARIOS</div>
+    <h1>Crear cuenta</h1>
+    <p class="auth-sub">Completa tus datos para registrarte en la plataforma.</p>
+
+    @if (error()) {
+      <div class="alert alert-error">{{ error() }}</div>
+    }
+    @if (exito()) {
+      <div class="alert alert-ok">{{ exito() }}</div>
+    }
+
+    <div class="grid-2">
+      <div class="field">
+        <label for="nombres">Nombres</label>
+        <input id="nombres" type="text" formControlName="nombres" />
+      </div>
+      <div class="field">
+        <label for="apellidos">Apellidos</label>
+        <input id="apellidos" type="text" formControlName="apellidos" />
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="field">
+        <label for="ci">Cédula de identidad</label>
+        <input id="ci" type="text" formControlName="ci" />
+      </div>
+      <div class="field">
+        <label for="extension">Extensión</label>
+        <input id="extension" type="text" formControlName="extension" placeholder="SC, LP, CB…" />
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="correo">Correo electrónico</label>
+      <input id="correo" type="email" formControlName="correo" />
+    </div>
+
+    <div class="field">
+      <label for="telefono">Teléfono</label>
+      <input id="telefono" type="tel" formControlName="telefono" />
+    </div>
+
+    <div class="grid-2">
+      <div class="field">
+        <label for="f_nac">Fecha de nacimiento</label>
+        <input id="f_nac" type="date" formControlName="f_nac" />
+      </div>
+      <div class="field">
+        <label for="sexo">Sexo</label>
+        <select id="sexo" formControlName="sexo">
+          <option value="M">Masculino</option>
+          <option value="F">Femenino</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="field">
+        <label for="estcivil">Estado civil</label>
+        <select id="estcivil" formControlName="estcivil">
+          <option value="soltero">Soltero/a</option>
+          <option value="casado">Casado/a</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="rol">Quiero registrarme como</label>
+        <select id="rol" formControlName="rol">
+          @for (r of roles; track r.value) {
+            <option [value]="r.value">{{ r.label }}</option>
+          }
+        </select>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="password">Contraseña</label>
+      <input id="password" type="password" formControlName="password" />
+      @if (form.controls.password.touched && form.controls.password.invalid) {
+        <span class="error-text">Mínimo 6 caracteres.</span>
+      }
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="cargando()">
+      {{ cargando() ? 'Enviando…' : 'Crear cuenta' }}
+    </button>
+
+    <p class="auth-switch">
+      ¿Ya tenés cuenta? <a routerLink="/login">Inicia sesión</a>
+    </p>
+  </form>
+</section>

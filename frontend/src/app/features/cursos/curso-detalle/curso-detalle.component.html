@@ -1,0 +1,53 @@
+<section class="detalle-shell container">
+  <a routerLink="/cursos" class="volver">&larr; Volver al catálogo</a>
+
+  @if (curso(); as c) {
+    <div class="detalle-grid">
+      <div class="panel detalle-info">
+        <span class="curso-nivel">{{ c.nivel }}</span>
+        <h1>{{ c.titulo }}</h1>
+        <p class="detalle-desc">{{ c.descripcion }}</p>
+
+        @if (c.requisitos?.length) {
+          <h3>Requisitos</h3>
+          <ul>
+            @for (r of c.requisitos; track r) {
+              <li>{{ r }}</li>
+            }
+          </ul>
+        }
+
+        @if (c.temario?.length) {
+          <h3>Temario</h3>
+          <ul>
+            @for (t of c.temario; track t) {
+              <li>{{ t }}</li>
+            }
+          </ul>
+        }
+      </div>
+
+      <aside class="panel detalle-side">
+        <div class="detalle-precio">
+          {{ c.planRequerido ? ('Requiere plan ' + c.planRequerido) : ('Bs. ' + c.precioBase) }}
+        </div>
+        <div class="detalle-meta">
+          <span>{{ c.duracionHoras }} horas</span>
+          <span>{{ c.categoria }}</span>
+        </div>
+
+        @if (auth.estaAutenticado()) {
+          <button type="button" class="btn btn-primary">Acceder al contenido</button>
+        } @else {
+          <a routerLink="/login" class="btn btn-primary">Inicia sesión para acceder</a>
+        }
+      </aside>
+    </div>
+  } @else {
+    @if (cargando()) {
+      <p class="estado-vacio">Cargando curso…</p>
+    } @else if (error()) {
+      <div class="alert alert-error">{{ error() }}</div>
+    }
+  }
+</section>

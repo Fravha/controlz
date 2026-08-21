@@ -1,0 +1,19 @@
+<nav class="navbar">
+  <a routerLink="/" class="brand">CTRL<span class="z">Z</span></a>
+
+  <div class="navlinks">
+    <a routerLink="/cursos">Cursos</a>
+    <a routerLink="/blog">Blog</a>
+
+    @if (auth.estaAutenticado()) {
+      <a [routerLink]="rutaPanel()">Mi panel</a>
+      <span class="usuario">{{ auth.usuario()?.nombres }}</span>
+      <button type="button" class="nav-action" (click)="cerrarSesion()">Cerrar sesión</button>
+    } @else {
+      <a routerLink="/registro" class="nav-action">Registro</a>
+      <a routerLink="/login" class="nav-action nav-action-primary">Ingresar</a>
+    }
+
+    <a routerLink="/nosotros">Nosotros</a>
+  </div>
+</nav>
